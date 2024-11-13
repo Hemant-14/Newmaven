@@ -21,22 +21,22 @@ pipeline
         {
             steps
             {
-                deploy adapters: [tomcat9(credentialsId: '893ff8a6-d52a-4fd1-9147-4ee3dc69c05b', path: '', url: 'http://172.31.34.213:8080')], contextPath: 'newtestapp', war: '**/*.war'
-            }
+                 deploy adapters: [tomcat9(credentialsId: 'af74d293-040d-4396-a60c-295399499295', path: '', url: 'http://172.31.85.27:8080')], contextPath: 'newtestapp', war: '**/*.war'
+	     }
         }
         stage('ContTesting')
         {
             steps
             {
                 git 'https://github.com/IntelliqDevops/FunctionalTesting.git'
-                sh 'java -jar /var/lib/jenkins/workspace/DeclarativePipeline1/testing.jar'
+                sh 'java -jar /var/lib/jenkins/workspace/Scripted-1/testing.jar'
             }
         }
         stage('ContDelivery')
         {
             steps
             {
-                deploy adapters: [tomcat9(credentialsId: '893ff8a6-d52a-4fd1-9147-4ee3dc69c05b', path: '', url: 'http://172.31.44.165:8080')], contextPath: 'newprodapp1', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'af74d293-040d-4396-a60c-295399499295', path: '', url: 'http://172.31.91.46:8080')], contextPath: 'newprodapp', war: '**/*.war'
             }
         }
         
