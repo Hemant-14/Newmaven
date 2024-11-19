@@ -21,7 +21,7 @@ pipeline
         {
             steps
             {
-                deploy adapters: [tomcat9(credentialsId: '1505ba75-a35a-4f25-bed2-f0a4c97b1041', path: '', url: 'http://172.31.85.27:8080')], contextPath: 'testapp02', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'c921164b-9c11-4ae1-b777-09055a9c2f58', path: '', url: 'http://172.31.44.189:8080')], contextPath: 'testapp01', war: '**/*.war'
 	    }
         }
         stage('ContTesting')
@@ -29,14 +29,7 @@ pipeline
             steps
             {
                 git 'https://github.com/IntelliqDevops/FunctionalTesting.git'
-                sh 'java -jar /var/lib/jenkins/workspace/Declarative-SCM/testing.jar'
-            }
-        }
-        stage('ContDelivery')
-        {
-            steps
-            {
-                deploy adapters: [tomcat9(credentialsId: '1505ba75-a35a-4f25-bed2-f0a4c97b1041', path: '', url: 'http://172.31.91.46:8080')], contextPath: 'prodapp02', war: '**/*.war'
+                sh 'java -jar /var/lib/jenkins/workspace/Declarative-Script/testing.jar'
             }
         }
     }
